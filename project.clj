@@ -49,6 +49,7 @@
                 :compiler {:output-to "resources/public/js/compiled/postaustralia.js"
                            :main postaustralia.core
                            :optimizations :advanced
+                           :externs ["src/externs/api.ai.externs.js"]
                            :pretty-print false}}]}
 
   :figwheel {;; :http-server-root "public" ;; default and assumes "resources"
