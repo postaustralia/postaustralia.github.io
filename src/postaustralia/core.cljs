@@ -1,5 +1,6 @@
 (ns postaustralia.core
-  (:require [rum.core :as rum]))
+  (:require [rum.core :as rum]
+            [postaustralia.xyz :as xyz]))
 
 (enable-console-print!)
 
@@ -9,7 +10,13 @@
 
 (defonce app-state (atom {:text "Live as if you were working in the latter days of a disposable nation."}))
 
-(rum/defc hexagon [] 
+(rum/defc colour [] 
+  [:li
+   [:div {:style {:background-color (rand-nth ["#FF0000" "#FF0021" "#FFFCFC" "#FF7D92" "#FF3858"])}}
+        [:h1 "Postaustralia"]
+        [:p (:text @app-state)]]])
+
+(rum/defc brand [] 
   [:li 
    [:div 
     [:img {:src "img/postaustralia.svg" :alt ""}]
@@ -25,7 +32,7 @@
 (rum/defc hive [size]
   [:ul.clr.categories 
    (map (fn [component react-key] (rum/with-key (component) react-key)) 
-        (repeatedly size #(rand-nth [hexagon hexagon hexagon pusher filler])) 
+        (repeatedly size #(rand-nth [colour colour colour brand brand brand pusher filler])) 
         (range size))])
 
 #_(rum/defc hello-world []
