@@ -31,7 +31,8 @@
     [:li.hoverable 
      [:div {:style color
             :class (if hovered "hovered" "")
-            :on-mouse-enter (fn [_] (swap! local assoc :hovered true))}
+            :on-mouse-enter (fn [_] (swap! local assoc :hovered true))
+            :on-focus (fn [_] (swap! local assoc :hovered true))}
       content]]))
 
 (rum/defc brand [] 
