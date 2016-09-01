@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="200px"
+   height="200px"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="spinner.svg">
+  <sodipodi:namedview
+     pagecolor="#000000"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1058"
+     id="namedview3133"
+     showgrid="false"
+     inkscape:zoom="4.5"
+     inkscape:cx="74.111111"
+     inkscape:cy="100"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg3081" />
+  <g
+     transform="translate(50,50)"
+     id="g3083">
+    <circle
+       cx="50"
+       cy="0"
+       r="12"
+       fill="white"
+       id="circle3085"
+       d="M 62,0 C 62,6.627417 56.627417,12 50,12 43.372583,12 38,6.627417 38,0 c 0,-6.627417 5.372583,-12 12,-12 6.627417,0 12,5.372583 12,12 z"
+       sodipodi:cx="50"
+       sodipodi:cy="0"
+       sodipodi:rx="12"
+       sodipodi:ry="12">
+    </circle>
+    <circle
+       cx="75"
+       cy="6.69873"
+       r="12"
+       fill="white"
+       id="circle3089"
+       d="m 87,6.69873 c 0,6.627417 -5.372583,12 -12,12 -6.627417,0 -12,-5.372583 -12,-12 0,-6.62741701 5.372583,-12 12,-12 6.627417,0 12,5.37258299 12,12 z"
+       sodipodi:cx="75"
+       sodipodi:cy="6.69873"
+       sodipodi:rx="12"
+       sodipodi:ry="12">
+    </circle>
+    <circle
+       cx="93.30127"
+       cy="25"
+       r="12"
+       fill="white"
+       id="circle3093"
+       d="m 105.30127,25 c 0,6.627417 -5.372583,12 -12,12 -6.627417,0 -12,-5.372583 -12,-12 0,-6.627417 5.372583,-12 12,-12 6.627417,0 12,5.372583 12,12 z"
+       sodipodi:cx="93.30127"
+       sodipodi:cy="25"
+       sodipodi:rx="12"
+       sodipodi:ry="12">
+    </circle>
+    <circle
+       cx="100"
+       cy="50"
+       r="12"
+       fill="white"
+       id="circle3097"
+       d="m 112,50 c 0,6.627417 -5.37258,12 -12,12 -6.627417,0 -12,-5.372583 -12,-12 0,-6.627417 5.372583,-12 12,-12 6.62742,0 12,5.372583 12,12 z"
+       sodipodi:cx="100"
+       sodipodi:cy="50"
+       sodipodi:rx="12"
+       sodipodi:ry="12">
+    </circle>
+    <circle
+       cx="93.30127"
+       cy="75"
+       r="12"
+       fill="white"
+       id="circle3101"
+       d="m 105.30127,75 c 0,6.627417 -5.372583,12 -12,12 -6.627417,0 -12,-5.372583 -12,-12 0,-6.627417 5.372583,-12 12,-12 6.627417,0 12,5.372583 12,12 z"
+       sodipodi:cx="93.30127"
+       sodipodi:cy="75"
+       sodipodi:rx="12"
+       sodipodi:ry="12">
+    </circle>
+    <circle
+       cx="75"
+       cy="93.30127"
+       r="12"
+       fill="white"
+       id="circle3105"
+       d="m 87,93.30127 c 0,6.627417 -5.372583,12 -12,12 -6.627417,0 -12,-5.372583 -12,-12 0,-6.627417 5.372583,-12 12,-12 6.627417,0 12,5.372583 12,12 z"
+       sodipodi:cx="75"
+       sodipodi:cy="93.30127"
+       sodipodi:rx="12"
+       sodipodi:ry="12">
+    </circle>
+    <circle
+       cx="50"
+       cy="100"
+       r="12"
+       fill="white"
+       id="circle3109"
+       d="m 62,100 c 0,6.62742 -5.372583,12 -12,12 -6.627417,0 -12,-5.37258 -12,-12 0,-6.627417 5.372583,-12 12,-12 6.627417,0 12,5.372583 12,12 z"
+       sodipodi:cx="50"
+       sodipodi:cy="100"
+       sodipodi:rx="12"
+       sodipodi:ry="12">
+    </circle>
+    <circle
+       cx="25"
+       cy="93.30127"
+       r="12"
+       fill="white"
+       id="circle3113"
+       d="m 37,93.30127 c 0,6.627417 -5.372583,12 -12,12 -6.627417,0 -12,-5.372583 -12,-12 0,-6.627417 5.372583,-12 12,-12 6.627417,0 12,5.372583 12,12 z"
+       sodipodi:cx="25"
+       sodipodi:cy="93.30127"
+       sodipodi:rx="12"
+       sodipodi:ry="12">
+    </circle>
+    <circle
+       cx="6.69873"
+       cy="75"
+       r="12"
+       fill="white"
+       id="circle3117"
+       d="m 18.69873,75 c 0,6.627417 -5.372583,12 -12,12 -6.62741701,0 -12,-5.372583 -12,-12 0,-6.627417 5.37258299,-12 12,-12 6.627417,0 12,5.372583 12,12 z"
+       sodipodi:cx="6.69873"
+       sodipodi:cy="75"
+       sodipodi:rx="12"
+       sodipodi:ry="12">
+    </circle>
+    <circle
+       cx="0"
+       cy="50"
+       r="12"
+       fill="white"
+       id="circle3121"
+       d="m 12,50 c 0,6.627417 -5.372583,12 -12,12 -6.627417,0 -12,-5.372583 -12,-12 0,-6.627417 5.372583,-12 12,-12 6.627417,0 12,5.372583 12,12 z"
+       sodipodi:cx="0"
+       sodipodi:cy="50"
+       sodipodi:rx="12"
+       sodipodi:ry="12">
+    </circle>
+    <circle
+       cx="6.69873"
+       cy="25"
+       r="12"
+       fill="white"
+       id="circle3125"
+       d="m 18.69873,25 c 0,6.627417 -5.372583,12 -12,12 -6.62741701,0 -12,-5.372583 -12,-12 0,-6.627417 5.37258299,-12 12,-12 6.627417,0 12,5.372583 12,12 z"
+       sodipodi:cx="6.69873"
+       sodipodi:cy="25"
+       sodipodi:rx="12"
+       sodipodi:ry="12">
+    </circle>
+    <circle
+       cx="25"
+       cy="6.69873"
+       r="12"
+       fill="white"
+       id="circle3129"
+       d="m 37,6.69873 c 0,6.627417 -5.372583,12 -12,12 -6.627417,0 -12,-5.372583 -12,-12 0,-6.62741701 5.372583,-12 12,-12 6.627417,0 12,5.37258299 12,12 z"
+       sodipodi:cx="25"
+       sodipodi:cy="6.69873"
+       sodipodi:rx="12"
+       sodipodi:ry="12">
+    </circle>
+  </g>
+</svg>
