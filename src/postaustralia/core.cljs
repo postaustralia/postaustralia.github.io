@@ -4,7 +4,11 @@
 
 (enable-console-print!)
 
-(defonce app-state (atom {:listening false}))
+;; [:ready :listening :thinking]
+(defonce app-state (atom {:chat {:state :thinking}}))
+
+;; Initialise AI
+(xyz/init-ai #(swap! app-state assoc-in [:chat :state] :ready))
 
 #_(defn gen-key []
      (gensym "key-"))
@@ -41,50 +45,59 @@
 (rum/defc filler [] 
   [:li [:div]])
 
+;; loading animation
+(rum/defc spinner []
+  [:img.spinner {:src "img/spinner.svg"}])
+
 ;; chat cells
-(defn show-response [result]
-  (swap! app-state assoc :response (.-speech (.-fulfillment result))))
+(defn transact-ai-response [result]
+  (let [user (.-resolvedQuery result)
+        xyz (.-speech (.-fulfillment result))]
+    (swap! app-state 
+           update-in [:chat] 
+           merge {:user user :xyz xyz :state :ready})))
 
-(rum/defcs audio-button < rum/reactive []
-  (let [listening (:listening (rum/react app-state))
+(rum/defcs chatter < rum/reactive []
+  (let [{:keys [state user xyz]} (:chat (rum/react app-state))
         toggle (fn [_]
-                 (if listening 
-                   (do 
-                     (println "Finished chatting …") 
-                     (xyz/stop-ai)) 
-                   (do
-                     (println "Say something …") 
-                     (xyz/receive-chat show-response)
-                     (xyz/start-ai)))
-                 (swap! app-state assoc :listening (not listening)))
-        svg-file "img/microphone.svg"]
-    [:h1 
-     [:div.clickable-overlay {:on-click toggle}] 
-     [:img {:src svg-file}]]))
-
-(rum/defc chat [] 
-  (hoverable-cell (audio-button)))
+                 (case state
+                   :listening 
+                   (do (xyz/stop-ai)
+                       (swap! app-state assoc-in [:chat :state] :thinking))
+                   :ready 
+                   (do (xyz/receive-chat transact-ai-response)
+                       (xyz/start-ai)
+                       (swap! app-state assoc-in [:chat :state] :listening))
+                   :default))]
+    (hoverable-cell
+      [:h1 
+       [:div.clickable-overlay {:on-click toggle}]
+       (case state
+         :thinking (spinner)
+         [:img {:src "img/microphone.svg"}])]
+      [:p user])))
 
 (rum/defc responder < rum/reactive [] 
-  (let [response (:response (rum/react app-state))]
+  (let [{:keys [state user xyz]} (:chat (rum/react app-state))]
     (hoverable-cell
-      [:h1 [:img {:src "img/speaker.svg" :style {:height "50px" :width "50px"}}]]
-      [:p response])))
+      [:h1 
+       (case state
+         :thinking (spinner)
+         [:img {:src "img/speaker.svg"}])]
+      [:p xyz])))
 
 (rum/defc hive [size]
   [:ul.clr.categories 
    (let [ingredients [[8 cell] [2 brand] [1 pusher] [1 filler]]
-         cocktail (mapcat #(repeat (first %) (last %)) ingredients)]
+         cocktail (mapcat #(repeat (first %) (last %)) ingredients)
+         shaker (concat [cell filler cell brand chatter responder] (repeatedly size #(rand-nth cocktail)))]
      (map #(rum/with-key (%1) %2)
-          (-> (into [] (repeatedly size #(rand-nth cocktail)))
-              (assoc 5 chat)
-              (assoc 4 responder)
-              (assoc 3 brand))
-          (range size)))])
+          shaker
+          (range (count shaker))))])
 
 (rum/mount (hive 100)
            (. js/document (getElementById "app")))
 
-(defn on-js-reload []
+#_(defn on-js-reload []
   (swap! app-state update-in [:__figwheel_counter] inc))
 
