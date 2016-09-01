@@ -21,4 +21,17 @@
 
 (make-ai)
 
+(defn stop-ai [] 
+  (.stopListening (:handle @ai)))
+
+(defn start-ai [] 
+  (.startListening (:handle @ai)))
+
+(defn receive-chat [callback]
+  (let [handle (:handle @ai)]
+    (aset handle "onResults" 
+          (fn [data] 
+            (println "Received a new result …")
+            (callback (.-result data))))))
+
 
