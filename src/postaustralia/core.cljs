@@ -1,7 +1,8 @@
 (ns postaustralia.core
   (:require [postaustralia.cell :as cell]
             [rum.core :as rum]
-            [postaustralia.xyz :as xyz]))
+            [postaustralia.xyz :as xyz]
+            [postaustralia.jekyll :as jekyll]))
 
 (enable-console-print!)
 
@@ -26,7 +27,7 @@
            update-in [:chat] 
            merge {:user user :xyz xyz :state :ready})))
 
-(rum/defcs chatter < rum/reactive []
+(rum/defc chatter < rum/reactive []
   (let [{:keys [state user xyz]} (:chat (rum/react app-state))
         toggle (fn [_]
                  (case state
@@ -57,7 +58,8 @@
 
 (rum/defc hive [size]
   [:ul.clr.categories 
-   (let [ingredients [[8 cell/basic] [2 cell/brand] [1 cell/push] [1 cell/fill]]
+   (let [jekyll-test (partial jekyll/jekyll "4df3e4")
+         ingredients [[8 cell/basic] [2 cell/brand] [1 cell/push] [1 cell/fill]]
          cocktail (mapcat #(repeat (first %) (last %)) ingredients)
          shaker (concat [cell/basic cell/fill cell/basic cell/brand chatter responder] 
                         (repeatedly size #(rand-nth cocktail)))]
