@@ -1,5 +1,6 @@
 (ns postaustralia.core
-  (:require [rum.core :as rum]
+  (:require [postaustralia.cell :as cell]
+            [rum.core :as rum]
             [postaustralia.xyz :as xyz]))
 
 (enable-console-print!)
@@ -12,39 +13,6 @@
 
 #_(defn gen-key []
      (gensym "key-"))
-
-;; "#e9e8dc" "#11120c" "#aaac87" "#f6e4b6" "#515d51" "#333333" "rgb(216, 25, 53)"
-(defn rand-color
-  ([] {:backgroundColor (rand-nth ["#6a695d" "#11120c" "#aaac87" "#c3b183" 
-                                   "#515d51" "#333333" "rgb(216, 25, 53)"])}) 
-  ([other-styles]
-   (merge other-styles (rand-color))))
-
-;; passive cell types
-(rum/defc cell [& content] 
-  [:li [:div {:style (rand-color)} content]])
-
-(rum/defcs hoverable-cell < (rum/local {:hovered false :color (rand-color)} ::local)
-  [state & content]
-  (let [local (::local state)
-        {:keys [hovered color]} @local]
-    [:li.hoverable 
-     [:div {:style color
-            :class (if hovered "hovered" "")
-            :on-mouse-enter (fn [_] (swap! local assoc :hovered true))
-            :on-focus (fn [_] (swap! local assoc :hovered true))}
-      content]]))
-
-(rum/defc brand [] 
-  [:li 
-   [:div 
-    [:img.cell-img {:src "img/postaustralia.svg" :alt ""}]]])
-
-(rum/defc pusher []
-  [:li.pusher])
-
-(rum/defc filler [] 
-  [:li [:div]])
 
 ;; loading animation
 (rum/defc spinner []
@@ -70,7 +38,7 @@
                        (xyz/start-ai)
                        (swap! app-state assoc-in [:chat :state] :listening))
                    :default))]
-    (hoverable-cell
+    (cell/hoverable
       [:h1 
        [:div.clickable-overlay {:on-click toggle}]
        (case state
@@ -80,7 +48,7 @@
 
 (rum/defc responder < rum/reactive [] 
   (let [{:keys [state user xyz]} (:chat (rum/react app-state))]
-    (hoverable-cell
+    (cell/hoverable
       [:h1 
        (case state
          :thinking (spinner)
@@ -89,9 +57,11 @@
 
 (rum/defc hive [size]
   [:ul.clr.categories 
-   (let [ingredients [[8 cell] [2 brand] [1 pusher] [1 filler]]
+   (let [ingredients [[8 cell/basic] [2 cell/brand] [1 cell/push] [1 cell/fill]]
          cocktail (mapcat #(repeat (first %) (last %)) ingredients)
-         shaker (concat [cell filler cell brand chatter responder] (repeatedly size #(rand-nth cocktail)))]
+         shaker (concat [cell/basic cell/fill cell/basic cell/brand chatter responder] 
+                        (repeatedly size #(rand-nth cocktail)))]
+
      (map #(rum/with-key (%1) %2)
           shaker
           (range (count shaker))))])
